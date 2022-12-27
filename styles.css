@@ -1,0 +1,241 @@
+:root {
+  --grey: hsl(237, 18%, 59%);
+  --accent: rgb(251, 96, 135);
+  --sky: rgba(251, 96, 135, 0.497);
+  --white: hsl(0, 0%, 100%);
+  --mid-blue: #343650;
+  --dark-blue: #1e1f29;
+  --darkest-blue: #191a24;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  color: var(--grey);
+  height: 100vh;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 700;
+  background-color: var(--darkest-blue);
+  background-size: 100%, cover, cover;
+  background-position: bottom, center, center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-image: url("images/pattern-hills.svg"), url("images/bg-stars.svg"),
+    linear-gradient(
+      to bottom,
+      var(--darkest-blue) 40%,
+      var(--mid-blue) 62%,
+      var(--sky) 84%
+    );
+}
+
+h1 {
+  font-size: 1.25rem;
+  color: var(--white);
+  letter-spacing: 6px;
+  margin: 0 auto 6rem;
+}
+
+p {
+  margin: 1rem auto;
+  letter-spacing: 2px;
+  font-size: 10px;
+}
+
+.main {
+  display: flex;
+  padding: 6rem 0 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.countdown {
+  margin: 0 auto;
+  width: min(90%, 600px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card {
+  font-size: clamp(1.8rem, 5vw, 4.375rem);
+  width: clamp(60px, 20vw, 130px);
+  display: inline-flex;
+  flex-direction: column;
+  color: var(--accent);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0px 8px 0px 0px hsla(235, 18%, 12%, 0.8);
+  position: relative;
+}
+
+.card-top,
+.card-bottom {
+  height: 1em;
+  line-height: 1;
+  padding: 0.5em;
+  overflow: hidden;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: var(--mid-blue);
+  color: var(--accent);
+  filter: brightness(75%);
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--mid-blue);
+  color: var(--accent);
+  height: 1em;
+  line-height: 1;
+  padding: 0.5em;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.card::before {
+  top: 0;
+  align-items: flex-start;
+  filter: brightness(60%);
+}
+
+.card::after {
+  bottom: 0;
+  align-items: flex-end;
+  filter: brightness(80%);
+}
+
+.card-bottom {
+  background-color: var(--mid-blue);
+  color: var(--accent);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.card-top.flip {
+  animation: top-flip 1s linear infinite;
+  transform-origin: bottom;
+}
+
+.card-bottom.flip {
+  animation: bottom-flip 1s linear 1s infinite;
+  transform-origin: top;
+}
+
+@keyframes top-flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+  70% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
+@keyframes bottom-flip {
+  0% {
+    transform: rotateX(90deg);
+  }
+  30% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.card-fold-detail {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+}
+
+.card-fold-left-circle,
+.card-fold-right-circle {
+  width: 8px;
+  height: 10px;
+  background-color: var(--dark-blue);
+  border-radius: 0 5px 5px 0;
+}
+
+.card-fold-left-circle {
+  border-radius: 0 5px 5px 0;
+}
+
+.card-fold-right-circle {
+  border-radius: 5px 0 0 5px;
+}
+
+.card-fold-shadow {
+  width: 100%;
+  height: 4px;
+  box-shadow: inset 0px 2px 0px 0px rgba(25, 26, 36, 0.08),
+    inset 0px -2px 0px 0px rgba(84, 87, 128, 0.08);
+}
+
+.icons {
+  margin: 0 auto 2rem;
+  display: flex;
+  width: 100px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.icons i {
+  transition: all 0.3s ease;
+}
+
+.icons i:hover {
+  color: var(--accent);
+}
+
+/* ATTRIBUTION */
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.attribution a {
+  color: var(--grey);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.attribution a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
